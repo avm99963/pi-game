@@ -33,11 +33,6 @@ window.onload = function() {
 			var entry = str_replace(codes, characters, number);
 			if ((number > 47 && number < 58) || number == 190)
 			{
-				pispan = document.getElementById("pinumber");
-				if (i > 78)
-					pispan.style.fontSize = "20px";
-	            if (first)
-	                document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
 				enterpi(entry);
 			}
 		}
@@ -46,6 +41,10 @@ window.onload = function() {
 
 function enterpi(entry) {
 				var pidigit = pi.charAt(0);
+				if (i > 78)
+					pispan.style.fontSize = "20px";
+	            if (first)
+	                document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
 				if (pidigit == entry)
 				{
 					i++;
@@ -63,6 +62,7 @@ function enterpi(entry) {
 					if (first === true)
 					{
 						first = false;
+						pispan = document.getElementById("pinumber");
 						pispan.innerHTML = "<span class='wrong'>"+entry+"</span><span class='next'>("+pidigit+"!!!)</span>";
 					}
 					else
