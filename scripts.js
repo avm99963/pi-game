@@ -19,16 +19,18 @@ window.onload = function() {
 		else if (lost === false)
 		{
 			var number = event.keyCode;
-			if (i > 78)
-				pispan.style.fontSize = "20px";
-            if (first)
-                document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
 			var codes = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 190];
 			var characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 			var numbertxt = number.toString();
 			var entry = str_replace(codes, characters, number);
 			if ((number > 47 && number < 58) || number == 190)
+			{
+				if (i > 78)
+					pispan.style.fontSize = "20px";
+	            if (first)
+	                document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
 				enterpi(entry);
+			}
 		}
 	}
 }
