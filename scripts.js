@@ -13,7 +13,7 @@ window.onload = function() {
 		if (event.shiftKey && event.keyCode == 191)
 		{
 			alert("Easter egg? Just sayin'...");
-			enterpi(pi.charAt(0));
+			document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
 			interval = setInterval(function(){enterpi(pi.charAt(0));}, 100);
 		}
 		else if (lost === false)
