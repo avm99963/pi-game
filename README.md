@@ -11,4 +11,4 @@ Clone this repository and open the file index.html with your favorite browser. I
 demo
 ====
 
-You can find a working demo at http://avm99963.github.io/pi-game/
+You can find a working demo at http://avm99963.tk/pi-game/
