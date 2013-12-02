@@ -1,20 +1,28 @@
-var pi, i = -2, lost = false, first = true, pispan, interval;
+var pi, i = -2, lost = false, first = true, pispan, interval, picopy;
 
 window.onload = function() {
 	var client = new XMLHttpRequest();
 	client.open('GET', 'pi.txt');
 	client.onreadystatechange = function() {
 	  pi = client.responseText;
+	  picopy = pi;
 	}
 	client.send();
 	pispan = document.getElementById("pinumber");
 	document.body.onkeydown = function(event)
 	{
-		if (event.shiftKey && event.keyCode == 191)
+		if (event.shiftKey)
 		{
-			alert("Easter egg? Just sayin'...");
-			document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
-			interval = setInterval(function(){enterpi(pi.charAt(0));}, 100);
+			if (event.keyCode == 191)
+			{
+				alert("Easter egg? Just sayin'...");
+				document.getElementById("introductiontext").parentNode.removeChild(document.getElementById("introductiontext"));
+				interval = setInterval(function(){enterpi(pi.charAt(0));}, 100);
+			}
+			else if (event.keyCode == 82)
+			{
+				reset();
+			}
 		}
 		else if (lost === false)
 		{
@@ -25,6 +33,7 @@ window.onload = function() {
 			var entry = str_replace(codes, characters, number);
 			if ((number > 47 && number < 58) || number == 190)
 			{
+				pispan = document.getElementById("pinumber");
 				if (i > 78)
 					pispan.style.fontSize = "20px";
 	            if (first)
@@ -60,4 +69,12 @@ function enterpi(entry) {
 						pispan.innerHTML = pispan.innerHTML+"<span class='wrong'>"+entry+"</span><span class='next'>("+pidigit+")</span>";
 					lost = true;
 				}
+}
+
+function reset() {
+	pi = picopy;
+	i = -2;
+	lost = false;
+	first = true;
+	document.getElementsByClassName("centered")[0].innerHTML = '<span id="introductiontext" class="centered">Write π without any error!</span><span id="pinumber" class="centered good"></span>';
 }
