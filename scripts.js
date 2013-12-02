@@ -51,6 +51,7 @@ function enterpi(entry) {
 					if (first === true)
 					{
 						first = false;
+						pispan = document.getElementById("pinumber");
 						pispan.innerHTML = entry;
 					}
 					else
